@@ -1,8 +1,28 @@
-import * as React from "react";
+import React from 'react';
+import { style } from 'typestyle';
+
+const page = style({
+  display: 'flex',
+  maxWidth: '800px',
+  width: 'calc(100% - 40px)',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '40px',
+});
 
 export default () => (
-  <>
-    <h1>Welcome to React Vite Micro App!</h1>
-    <p>Hard to get more minimal than this React app.</p>
-  </>
+  <div className={page}>
+    {/* <Navigation /> */}
+
+    <h1>Top Wikipedia Articles</h1>
+
+    {/* <ActionBar />
+
+    <div>
+      <Card>1</Card>
+      <Card>2</Card>
+    </div>
+
+    <BottomPagination /> */}
+  </div>
 );
