@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { style } from 'typestyle';
 import { Navigation } from './components/Navigation';
 import { BottomPagination } from './components/BottomPagination';
 import { ActionBar } from './components/ActionBar';
 import { Card } from './components/Card';
 import { Article } from './components/Article';
+import { ArticleData, useFetchArticles } from './hooks/useFetchArticles';
 
 const pageStyle = style({
   display: 'flex',
@@ -14,7 +15,8 @@ const pageStyle = style({
 
 const contentStyle = style({
   display: 'flex',
-  width: '800px',
+  width: 'calc(100% - 48px)',
+  maxWidth: '800px',
   padding: '56px 0px 80px 0px',
   flexDirection: 'column',
   alignItems: 'center',
@@ -28,23 +30,59 @@ const mainStyle = style({
   width: '100%',
 });
 
-export default () => (
-  <div className={pageStyle}>
-    <Navigation />
+function generatePages(pageSize: number, articles?: ArticleData[]) {
+  if (!articles) return undefined;
 
-    <div className={contentStyle}>
-      <h1>Top Wikipedia Articles</h1>
+  const pages = [];
+  for (let i = 0; i < articles.length; i += pageSize) {
+    pages.push(articles.slice(i, i + pageSize));
+  }
 
-      <div className={mainStyle}>
-        <ActionBar />
+  return pages;
+}
 
-        <Card>
-          <Article index={1} title="The Last of Us" views={12345} />
-          <Article index={2} title="Chat GPT" views={123} />
-        </Card>
+const yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
+
+export default () => {
+  const [searchDate, setSearchDate] = useState(yesterday);
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(100);
+  const { articles, error } = useFetchArticles(searchDate);
+
+  const pages = generatePages(pageSize, articles);
+
+  return (
+    <div className={pageStyle}>
+      <Navigation />
+
+      <div className={contentStyle}>
+        <h1>Top Wikipedia Articles</h1>
+
+        <div className={mainStyle}>
+          <ActionBar
+            searchDate={searchDate}
+            setSearchDate={setSearchDate}
+            pageSize={pageSize}
+            setPageSize={setPageSize}
+          />
+
+          <Card>
+            {error && <div style={{ textAlign: 'center' }}>Something went wrong fetching articles!</div>}
+
+            <Article index={1} title="The Last of Us" views={12345} />
+            <Article index={2} title="Chat GPT" views={123} />
+          </Card>
+        </div>
+
+        {!error && pages && (
+          <BottomPagination
+            currentPage={page}
+            totalPages={pages.length}
+            onPageChange={(selectedItem: { selected: number }) => setPage(selectedItem.selected)}
+          />
+        )}
       </div>
-
-      <BottomPagination />
     </div>
-  </div>
-);
+  );
+};
