@@ -1,12 +1,14 @@
 import React from 'react';
 import { style } from 'typestyle';
 
-import { ReactComponent as Calendar } from '../icons/calendar.svg';
-import { ReactComponent as List } from '../icons/list.svg';
+import { ReactComponent as CalendarIcon } from '../icons/calendar.svg';
+import { ReactComponent as ListIcon } from '../icons/list.svg';
 
+import { Button } from './Button';
 import { Divider } from './Divider';
 import { DropdownWithIcon } from './DropdownWithIcon';
 import { Icon } from './Icon';
+import { List, ListStyle } from './List';
 
 interface ActionBarProps {
   searchDate: Date;
@@ -37,26 +39,47 @@ export function ActionBar(props: ActionBarProps) {
       <DropdownWithIcon
         icon={
           <Icon style={{ background: 'var(--avocado-200, #ECF1E0)', color: 'var(--brand-green-500, #025B4B)' }}>
-            <Calendar />
+            <CalendarIcon />
           </Icon>
         }
         label="Date"
-        value={props.searchDate.toDateString()}
-      />
+        value={props.searchDate.toLocaleDateString(undefined, {
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric',
+        })}
+      >
+        <div>This is my dropdown</div>
+      </DropdownWithIcon>
 
       <Divider />
 
-      <DropdownWithIcon
-        icon={
-          <Icon style={{ background: 'var(--marigold-200, #ECF1E0)', color: 'var(--brand-marigold-500, #E68A00)' }}>
-            <List />
-          </Icon>
-        }
-        label="Num Results"
-        value={props.pageSize.toString()}
-      />
+      <NumResults value={props.pageSize} onChange={(num) => props.setPageSize(num)} />
 
-      <button>Search</button>
+      <Button>Search</Button>
     </div>
+  );
+}
+
+interface NumResultsProps {
+  value: number;
+  onChange: (num: number) => void;
+}
+
+function NumResults(props: NumResultsProps) {
+  return (
+    <DropdownWithIcon
+      icon={
+        <Icon style={{ background: 'var(--marigold-200, #ECF1E0)', color: 'var(--brand-marigold-500, #E68A00)' }}>
+          <ListIcon />
+        </Icon>
+      }
+      label="Num Results"
+      value={props.value.toString()}
+      onChange={(value) => props.onChange(Number.parseInt(value))}
+      menuClassName={ListStyle}
+    >
+      <List items={['25', '50', '75', '100', '200']} />
+    </DropdownWithIcon>
   );
 }

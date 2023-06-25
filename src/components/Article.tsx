@@ -1,10 +1,11 @@
 import React from 'react';
 import { style } from 'typestyle';
 
+import { ArticleData } from '../hooks/useFetchArticles';
+
 interface ArticleProps {
   index: number;
-  title: string;
-  views: number;
+  article: ArticleData;
 }
 
 const articleStyle = style({
@@ -36,11 +37,13 @@ const articleStyle = style({
 });
 
 export function Article(props: ArticleProps) {
+  const title = props.article.article.replace(/_/g, ' ');
+
   return (
     <article className={articleStyle}>
-      <div className="index">{props.index}</div>
-      <div className="title">{props.title}</div>
-      <div className="views">{props.views.toLocaleString('en-US')} views</div>
+      <div className="index">{props.index + 1}</div>
+      <div className="title">{title}</div>
+      <div className="views">{props.article.views.toLocaleString('en-US')} views</div>
     </article>
   );
 }

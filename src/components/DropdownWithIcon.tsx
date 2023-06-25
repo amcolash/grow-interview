@@ -1,13 +1,18 @@
-import React, { forwardRef } from 'react';
+import { Menu } from '@szhsin/react-menu';
+import '@szhsin/react-menu/dist/transitions/slide.css';
+import React, { FormEvent, MouseEventHandler } from 'react';
 import { style } from 'typestyle';
 
 import { ReactComponent as ChevronDown } from '../icons/chevron-down.svg';
+import { ReactComponent as ChevronUp } from '../icons/chevron-up.svg';
 
 interface DropdownWithIconProps {
   icon: React.ReactNode;
   label: string;
   value: React.ReactNode;
-  ref?: React.Ref<HTMLDivElement>;
+  children: React.ReactNode;
+  onChange: (value: any) => void;
+  menuClassName?: string;
 }
 
 const wrapperStyle = style({
@@ -19,10 +24,18 @@ const wrapperStyle = style({
   fontFamily: 'Poppins',
   borderRadius: '100px',
   userSelect: 'none',
+  border: 'none',
+  background: 'none',
 
   $nest: {
     '&:hover': {
       background: 'var(--neutral-100, #F5F7F7)',
+    },
+    '.text': {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      gap: '2px',
     },
     '.label': {
       color: 'var(--neutral-500, #A7AAAB)',
@@ -49,19 +62,40 @@ const wrapperStyle = style({
 
 export function DropdownWithIcon(props: DropdownWithIconProps) {
   return (
-    <div className={wrapperStyle} ref={props.ref}>
+    <Menu
+      menuButton={({ open }) => <MenuButton {...props} open={open} />}
+      onItemClick={(event) => props.onChange(event.value)}
+      menuClassName={props.menuClassName}
+      gap={10}
+      transition
+    >
+      {props.children}
+    </Menu>
+  );
+}
+
+/** Internal Button Component */
+interface MenuButtonProps {
+  icon: React.ReactNode;
+  label: string;
+  value: React.ReactNode;
+  open: boolean;
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+}
+
+const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(function Internal(props, ref) {
+  return (
+    <button className={wrapperStyle} ref={ref} onClick={props.onClick}>
       {props.icon}
 
-      <div>
+      <div className="text">
         <div className="label">
           <label>{props.label}</label>
-          <ChevronDown />
+          {props.open ? <ChevronUp /> : <ChevronDown />}
         </div>
 
         {props.value}
       </div>
-
-      {/* {open && } */}
-    </div>
+    </button>
   );
-}
+});

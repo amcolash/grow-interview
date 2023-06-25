@@ -71,8 +71,12 @@ export default () => {
           <Card>
             {error && <div style={{ textAlign: 'center' }}>Something went wrong fetching articles!</div>}
 
-            <Article index={1} title="The Last of Us" views={12345} />
-            <Article index={2} title="Chat GPT" views={123} />
+            {!error &&
+              pages &&
+              pages[page] &&
+              pages[page].map((article, index) => (
+                <Article key={index} index={page * pageSize + index} article={article} />
+              ))}
           </Card>
         </div>
 
