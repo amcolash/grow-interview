@@ -1,11 +1,12 @@
 import React from 'react';
 import { style } from 'typestyle';
-import { DropdownWithIcon } from './DropdownWithIcon';
 
 import { ReactComponent as Calendar } from '../icons/calendar.svg';
 import { ReactComponent as List } from '../icons/list.svg';
-import { Icon } from './Icon';
+
 import { Divider } from './Divider';
+import { DropdownWithIcon } from './DropdownWithIcon';
+import { Icon } from './Icon';
 
 interface ActionBarProps {
   searchDate: Date;
@@ -56,16 +57,6 @@ export function ActionBar(props: ActionBarProps) {
       />
 
       <button>Search</button>
-
-      {/* <input type="date" name="" id="" value={props.searchDate.toDateString()} />
-
-      <select name="" id="" value={props.pageSize}>
-        <option value="">25</option>
-        <option value="">50</option>
-        <option value="">75</option>
-        <option value="">100</option>
-        <option value="">200</option>
-      </select> */}
     </div>
   );
 }

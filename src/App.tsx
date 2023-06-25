@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { style } from 'typestyle';
-import { Navigation } from './components/Navigation';
-import { BottomPagination } from './components/BottomPagination';
+
 import { ActionBar } from './components/ActionBar';
-import { Card } from './components/Card';
 import { Article } from './components/Article';
+import { BottomPagination } from './components/BottomPagination';
+import { Card } from './components/Card';
+import { Navigation } from './components/Navigation';
 import { ArticleData, useFetchArticles } from './hooks/useFetchArticles';
 
 const pageStyle = style({
