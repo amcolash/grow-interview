@@ -1,28 +1,50 @@
 import React from 'react';
 import { style } from 'typestyle';
+import { Navigation } from './components/Navigation';
+import { BottomPagination } from './components/BottomPagination';
+import { ActionBar } from './components/ActionBar';
+import { Card } from './components/Card';
+import { Article } from './components/Article';
 
-const page = style({
+const pageStyle = style({
   display: 'flex',
-  maxWidth: '800px',
-  width: 'calc(100% - 40px)',
+  flexDirection: 'column',
+  alignItems: 'center',
+});
+
+const contentStyle = style({
+  display: 'flex',
+  width: '800px',
+  padding: '56px 0px 80px 0px',
   flexDirection: 'column',
   alignItems: 'center',
   gap: '40px',
 });
 
+const mainStyle = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '24px',
+  width: '100%',
+});
+
 export default () => (
-  <div className={page}>
-    {/* <Navigation /> */}
+  <div className={pageStyle}>
+    <Navigation />
 
-    <h1>Top Wikipedia Articles</h1>
+    <div className={contentStyle}>
+      <h1>Top Wikipedia Articles</h1>
 
-    {/* <ActionBar />
+      <div className={mainStyle}>
+        <ActionBar />
 
-    <div>
-      <Card>1</Card>
-      <Card>2</Card>
+        <Card>
+          <Article index={1} title="The Last of Us" views={12345} />
+          <Article index={2} title="Chat GPT" views={123} />
+        </Card>
+      </div>
+
+      <BottomPagination />
     </div>
-
-    <BottomPagination /> */}
   </div>
 );
