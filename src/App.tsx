@@ -6,7 +6,7 @@ import { Article } from './components/Article';
 import { BottomPagination } from './components/BottomPagination';
 import { Card } from './components/Card';
 import { Navigation } from './components/Navigation';
-import { maxWidth } from './consts';
+import { mobileWidth } from './consts';
 import { ArticleData, useFetchArticles } from './hooks/useFetchArticles';
 
 const pageStyle = style({
@@ -19,13 +19,13 @@ const contentStyle = style(
   {
     display: 'flex',
     width: 'calc(100% - 48px)',
-    maxWidth: '800px',
+    maxWidth: '950px',
     padding: '56px 0px 80px 0px',
     flexDirection: 'column',
     alignItems: 'center',
     gap: '40px',
   },
-  media({ maxWidth }, { width: '100%' })
+  media({ maxWidth: mobileWidth }, { width: '100%' })
 );
 
 const mainStyle = style({
@@ -53,7 +53,9 @@ export default () => {
   const [searchDate, setSearchDate] = useState(yesterday);
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(100);
+  const [language, setLanguage] = useState('en');
   const [url, setUrl] = useState('');
+
   const { articles, error } = useFetchArticles(url);
 
   const pages = generatePages(pageSize, articles);
@@ -71,6 +73,8 @@ export default () => {
             setSearchDate={setSearchDate}
             pageSize={pageSize}
             setPageSize={setPageSize}
+            language={language}
+            setLanguage={setLanguage}
             setUrl={setUrl}
           />
 

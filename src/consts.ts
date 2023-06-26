@@ -1,1 +1,1 @@
-export const maxWidth = 768;
+export const mobileWidth = 768;

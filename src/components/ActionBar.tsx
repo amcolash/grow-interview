@@ -2,9 +2,11 @@ import React from 'react';
 import { media, style } from 'typestyle';
 
 import { ReactComponent as CalendarIcon } from '../icons/calendar.svg';
+import { ReactComponent as GlobeIcon } from '../icons/globe.svg';
 import { ReactComponent as ListIcon } from '../icons/list.svg';
 
-import { maxWidth } from '../consts';
+import { mobileWidth } from '../consts';
+import { languages } from '../languages';
 import { Button } from './Button';
 import { Calendar } from './Calendar';
 import { Divider } from './Divider';
@@ -15,9 +17,11 @@ import { List, ListStyle } from './List';
 interface ActionBarProps {
   searchDate: Date;
   pageSize: number;
+  language: string;
 
   setSearchDate: (date: Date) => void;
   setPageSize: (num: number) => void;
+  setLanguage: (lang: string) => void;
   setUrl: (url: string) => void;
 }
 
@@ -37,7 +41,7 @@ const barStyle = style(
     boxShadow: '0px 2px 0px 1px rgba(5, 9, 13, 0.06)',
   },
   media(
-    { maxWidth },
+    { maxWidth: mobileWidth },
     {
       borderRadius: 0,
       flexDirection: 'column',
@@ -48,26 +52,28 @@ const barStyle = style(
   )
 );
 
+function updateUrl(props: ActionBarProps) {
+  const date = props.searchDate;
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+
+  const language = props.language;
+
+  const url = `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/${language}.wikipedia/all-access/${year}/${month}/${day}`;
+
+  props.setUrl(url);
+}
+
 export function ActionBar(props: ActionBarProps) {
   return (
     <div className={barStyle}>
       <DatePicker value={props.searchDate} onChange={(date) => props.setSearchDate(date)} />
       <Divider />
       <NumResults value={props.pageSize} onChange={(num) => props.setPageSize(num)} />
-      <Button
-        onClick={() => {
-          const date = props.searchDate;
-          const year = date.getFullYear();
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const day = date.getDate().toString().padStart(2, '0');
-
-          const url = `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/${year}/${month}/${day}`;
-
-          props.setUrl(url);
-        }}
-      >
-        Search
-      </Button>
+      <Divider />
+      <Language value={props.language} onChange={(lang) => props.setLanguage(lang)} />
+      <Button onClick={() => updateUrl(props)}>Search</Button>
     </div>
   );
 }
@@ -117,6 +123,29 @@ function NumResults(props: NumResultsProps) {
       menuClassName={ListStyle}
     >
       <List items={['25', '50', '75', '100', '200']} />
+    </DropdownWithIcon>
+  );
+}
+
+interface LanguageProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+function Language(props: LanguageProps) {
+  return (
+    <DropdownWithIcon
+      icon={
+        <Icon style={{ background: ' var(--ocean-200, #DEE8F6)', color: 'var(--brand-ocean-500, #2464C6)' }}>
+          <GlobeIcon />
+        </Icon>
+      }
+      label="Language"
+      value={languages.find((l) => l.code === props.value)?.language}
+      onChange={(value) => props.onChange(value)}
+      menuClassName={ListStyle}
+    >
+      <List items={languages.map((l) => ({ name: l.language, value: l.code }))} />
     </DropdownWithIcon>
   );
 }

@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import { media, style } from 'typestyle';
 
-import { maxWidth } from '../consts';
+import { mobileWidth } from '../consts';
 
 const buttonStyle = style(
   {
@@ -24,7 +24,7 @@ const buttonStyle = style(
     lineHeight: '24px',
     letterSpacing: '-0.32px',
   },
-  media({ maxWidth }, { width: '100%' })
+  media({ maxWidth: mobileWidth }, { width: '100%' })
 );
 
 export function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {

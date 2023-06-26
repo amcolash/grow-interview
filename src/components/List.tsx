@@ -3,11 +3,13 @@ import React from 'react';
 import { style } from 'typestyle';
 
 interface ListProps {
-  items: string[];
+  items: string[] | { name: string; value: string }[];
 }
 
 export const ListStyle = style({
   width: '200px',
+  maxHeight: 'min(400px, 100vh - 200px)',
+  overflowY: 'auto',
 });
 
 const itemStyle = style({
@@ -29,9 +31,14 @@ const itemStyle = style({
 });
 
 export function List(props: ListProps) {
-  return props.items.map((i) => (
-    <MenuItem value={i} className={itemStyle} key={i}>
-      {i}
-    </MenuItem>
-  ));
+  return props.items.map((i) => {
+    const name = typeof i === 'string' ? i : i.name;
+    const value = typeof i === 'string' ? i : i.value;
+
+    return (
+      <MenuItem value={value} className={itemStyle} key={value}>
+        {name}
+      </MenuItem>
+    );
+  });
 }

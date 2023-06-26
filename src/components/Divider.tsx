@@ -1,7 +1,7 @@
 import React from 'react';
 import { media, style } from 'typestyle';
 
-import { maxWidth } from '../consts';
+import { mobileWidth } from '../consts';
 
 const dividerStyle = style(
   {
@@ -9,7 +9,7 @@ const dividerStyle = style(
     height: '64px',
     margin: '0 16px',
   },
-  media({ maxWidth }, { display: 'none' })
+  media({ maxWidth: mobileWidth }, { display: 'none' })
 );
 
 export function Divider() {

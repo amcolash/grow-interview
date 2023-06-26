@@ -6,7 +6,7 @@ import { classes, media, style } from 'typestyle';
 import { ReactComponent as ChevronDown } from '../icons/chevron-down.svg';
 import { ReactComponent as ChevronUp } from '../icons/chevron-up.svg';
 
-import { maxWidth } from '../consts';
+import { mobileWidth } from '../consts';
 
 interface DropdownWithIconProps {
   icon: React.ReactNode;
@@ -29,7 +29,6 @@ const wrapperStyle = style(
     userSelect: 'none',
     border: 'none',
     background: 'none',
-    minWidth: '220px',
 
     $nest: {
       '&:hover, &:active': {
@@ -63,7 +62,7 @@ const wrapperStyle = style(
       },
     },
   },
-  media({ maxWidth }, { padding: '2px' })
+  media({ maxWidth: mobileWidth }, { padding: '2px', minWidth: '220px' })
 );
 
 const menuStyle = style({
