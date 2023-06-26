@@ -53,7 +53,8 @@ export default () => {
   const [searchDate, setSearchDate] = useState(yesterday);
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(100);
-  const { articles, error } = useFetchArticles(searchDate);
+  const [url, setUrl] = useState('');
+  const { articles, error } = useFetchArticles(url);
 
   const pages = generatePages(pageSize, articles);
 
@@ -70,18 +71,21 @@ export default () => {
             setSearchDate={setSearchDate}
             pageSize={pageSize}
             setPageSize={setPageSize}
+            setUrl={setUrl}
           />
 
-          <Card>
-            {error && <div style={{ textAlign: 'center' }}>Something went wrong fetching articles!</div>}
+          {url && url.length > 0 && (
+            <Card>
+              {error && <div style={{ textAlign: 'center' }}>Something went wrong fetching articles!</div>}
 
-            {!error &&
-              pages &&
-              pages[page] &&
-              pages[page].map((article, index) => (
-                <Article key={index} index={page * pageSize + index} article={article} />
-              ))}
-          </Card>
+              {!error &&
+                pages &&
+                pages[page] &&
+                pages[page].map((article, index) => (
+                  <Article key={index} index={page * pageSize + index} article={article} />
+                ))}
+            </Card>
+          )}
         </div>
 
         {!error && pages && (

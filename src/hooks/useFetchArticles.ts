@@ -19,16 +19,13 @@ interface APIResponse {
   ];
 }
 
-export function useFetchArticles(date: Date) {
+export function useFetchArticles(url: string) {
   const [articles, setArticles] = React.useState<ArticleData[]>();
   const [error, setError] = React.useState();
 
   React.useEffect(() => {
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
+    if (!url || url.length === 0) return;
 
-    const url = `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/${year}/${month}/${day}`;
     fetch(url)
       .then((res) => res.json())
       .then((articles: APIResponse) => {
@@ -41,7 +38,7 @@ export function useFetchArticles(date: Date) {
         setArticles(undefined);
         setError(err);
       });
-  }, [date]);
+  }, [url]);
 
   return { articles, error };
 }

@@ -29,7 +29,7 @@ const wrapperStyle = style(
     userSelect: 'none',
     border: 'none',
     background: 'none',
-    minWidth: '200px',
+    minWidth: '220px',
 
     $nest: {
       '&:hover, &:active': {
@@ -63,7 +63,7 @@ const wrapperStyle = style(
       },
     },
   },
-  media({ maxWidth }, { padding: 0 })
+  media({ maxWidth }, { padding: '2px' })
 );
 
 const menuStyle = style({

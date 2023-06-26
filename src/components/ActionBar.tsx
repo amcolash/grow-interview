@@ -18,6 +18,7 @@ interface ActionBarProps {
 
   setSearchDate: (date: Date) => void;
   setPageSize: (num: number) => void;
+  setUrl: (url: string) => void;
 }
 
 const barStyle = style(
@@ -53,7 +54,20 @@ export function ActionBar(props: ActionBarProps) {
       <DatePicker value={props.searchDate} onChange={(date) => props.setSearchDate(date)} />
       <Divider />
       <NumResults value={props.pageSize} onChange={(num) => props.setPageSize(num)} />
-      <Button>Search</Button>
+      <Button
+        onClick={() => {
+          const date = props.searchDate;
+          const year = date.getFullYear();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+
+          const url = `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/${year}/${month}/${day}`;
+
+          props.setUrl(url);
+        }}
+      >
+        Search
+      </Button>
     </div>
   );
 }
