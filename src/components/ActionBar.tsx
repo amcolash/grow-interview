@@ -1,10 +1,12 @@
 import React from 'react';
-import { style } from 'typestyle';
+import { media, style } from 'typestyle';
 
 import { ReactComponent as CalendarIcon } from '../icons/calendar.svg';
 import { ReactComponent as ListIcon } from '../icons/list.svg';
 
+import { maxWidth } from '../consts';
 import { Button } from './Button';
+import { Calendar } from './Calendar';
 import { Divider } from './Divider';
 import { DropdownWithIcon } from './DropdownWithIcon';
 import { Icon } from './Icon';
@@ -18,46 +20,67 @@ interface ActionBarProps {
   setPageSize: (num: number) => void;
 }
 
-const barStyle = style({
-  display: 'flex',
-  width: '100%',
-  height: '96px',
-  padding: '16px',
-  justifyContent: 'center',
-  alignItems: 'center',
-  gap: '16px',
+const barStyle = style(
+  {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
 
-  borderRadius: '100px',
-  background: 'var(--neutral-000, #FFF)',
-  boxShadow: '0px 2px 0px 1px rgba(5, 9, 13, 0.06)',
-});
+    width: '100%',
+    minHeight: '96px',
+    padding: '16px',
+    gap: '16px',
 
-// 25, 50, 75, 100, 200 default to 100)
+    borderRadius: '100px',
+    background: 'var(--neutral-000, #FFF)',
+    boxShadow: '0px 2px 0px 1px rgba(5, 9, 13, 0.06)',
+  },
+  media(
+    { maxWidth },
+    {
+      borderRadius: 0,
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      gap: '24px',
+      padding: '24px',
+    }
+  )
+);
+
 export function ActionBar(props: ActionBarProps) {
   return (
     <div className={barStyle}>
-      <DropdownWithIcon
-        icon={
-          <Icon style={{ background: 'var(--avocado-200, #ECF1E0)', color: 'var(--brand-green-500, #025B4B)' }}>
-            <CalendarIcon />
-          </Icon>
-        }
-        label="Date"
-        value={props.searchDate.toLocaleDateString(undefined, {
-          month: 'long',
-          day: 'numeric',
-          year: 'numeric',
-        })}
-      >
-        <div>This is my dropdown</div>
-      </DropdownWithIcon>
-
+      <DatePicker value={props.searchDate} onChange={(date) => props.setSearchDate(date)} />
       <Divider />
-
       <NumResults value={props.pageSize} onChange={(num) => props.setPageSize(num)} />
-
       <Button>Search</Button>
     </div>
+  );
+}
+
+interface DatePickerProps {
+  value: Date;
+  onChange: (date: Date) => void;
+}
+
+function DatePicker(props: DatePickerProps) {
+  return (
+    <DropdownWithIcon
+      icon={
+        <Icon style={{ background: 'var(--avocado-200, #ECF1E0)', color: 'var(--brand-green-500, #025B4B)' }}>
+          <CalendarIcon />
+        </Icon>
+      }
+      label="Date"
+      value={props.value.toLocaleDateString(undefined, {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      })}
+      // onChange={(value) => props.onChange(new Date(value))}
+    >
+      <Calendar date={props.value} onChange={(date) => props.onChange(date)} />
+    </DropdownWithIcon>
   );
 }
 

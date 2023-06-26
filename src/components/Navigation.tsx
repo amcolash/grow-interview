@@ -9,7 +9,7 @@ const navStyle = style({
   alignItems: 'center',
   gap: '8px',
   background: 'var(--white)',
-  boxShadow: '0px 2px 0px 0px rgba(var(--brand-green-500), 0.1)',
+  boxShadow: '0px 2px 0px 0px rgba(2, 91, 75, 0.10)',
 });
 
 export function Navigation() {

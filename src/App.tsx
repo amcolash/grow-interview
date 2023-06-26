@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { style } from 'typestyle';
+import { media, style } from 'typestyle';
 
 import { ActionBar } from './components/ActionBar';
 import { Article } from './components/Article';
 import { BottomPagination } from './components/BottomPagination';
 import { Card } from './components/Card';
 import { Navigation } from './components/Navigation';
+import { maxWidth } from './consts';
 import { ArticleData, useFetchArticles } from './hooks/useFetchArticles';
 
 const pageStyle = style({
@@ -14,15 +15,18 @@ const pageStyle = style({
   alignItems: 'center',
 });
 
-const contentStyle = style({
-  display: 'flex',
-  width: 'calc(100% - 48px)',
-  maxWidth: '800px',
-  padding: '56px 0px 80px 0px',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '40px',
-});
+const contentStyle = style(
+  {
+    display: 'flex',
+    width: 'calc(100% - 48px)',
+    maxWidth: '800px',
+    padding: '56px 0px 80px 0px',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '40px',
+  },
+  media({ maxWidth }, { width: '100%' })
+);
 
 const mainStyle = style({
   display: 'flex',
@@ -58,7 +62,7 @@ export default () => {
       <Navigation />
 
       <div className={contentStyle}>
-        <h1>Top Wikipedia Articles</h1>
+        <h1 style={{ margin: 0 }}>Top Wikipedia Articles</h1>
 
         <div className={mainStyle}>
           <ActionBar
