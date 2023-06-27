@@ -7,7 +7,7 @@ import { BottomPagination } from './components/BottomPagination';
 import { Card } from './components/Card';
 import { Navigation } from './components/Navigation';
 import { mobileWidth } from './consts';
-import { ArticleData, useFetchArticles } from './hooks/useFetchArticles';
+import { generatePages, useFetchArticles } from './hooks/useFetchArticles';
 
 const pageStyle = style({
   display: 'flex',
@@ -34,17 +34,6 @@ const mainStyle = style({
   gap: '24px',
   width: '100%',
 });
-
-function generatePages(pageSize: number, articles?: ArticleData[]) {
-  if (!articles) return undefined;
-
-  const pages = [];
-  for (let i = 0; i < articles.length; i += pageSize) {
-    pages.push(articles.slice(i, i + pageSize));
-  }
-
-  return pages;
-}
 
 const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
@@ -79,8 +68,13 @@ export default () => {
           />
 
           {url && url.length > 0 && (
-            <Card>
-              {error && <div style={{ textAlign: 'center' }}>Something went wrong fetching articles!</div>}
+            <Card testId="search-results">
+              {error && (
+                <div style={{ textAlign: 'center' }} data-testid="results-error">
+                  Something went wrong fetching articles!
+                  <pre>{error}</pre>
+                </div>
+              )}
 
               {!error &&
                 pages &&

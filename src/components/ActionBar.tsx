@@ -67,13 +67,15 @@ function updateUrl(props: ActionBarProps) {
 
 export function ActionBar(props: ActionBarProps) {
   return (
-    <div className={barStyle}>
+    <div className={barStyle} data-testid="action-bar">
       <DatePicker value={props.searchDate} onChange={(date) => props.setSearchDate(date)} />
       <Divider />
       <NumResults value={props.pageSize} onChange={(num) => props.setPageSize(num)} />
       <Divider />
       <Language value={props.language} onChange={(lang) => props.setLanguage(lang)} />
-      <Button onClick={() => updateUrl(props)}>Search</Button>
+      <Button onClick={() => updateUrl(props)} data-testid="search-button">
+        Search
+      </Button>
     </div>
   );
 }
@@ -97,6 +99,8 @@ function DatePicker(props: DatePickerProps) {
         day: 'numeric',
         year: 'numeric',
       })}
+      menuTestId="date-picker"
+      buttonTestId="date-picker-button"
       // onChange={(value) => props.onChange(new Date(value))}
     >
       <Calendar date={props.value} onChange={(date) => props.onChange(date)} />
@@ -121,6 +125,8 @@ function NumResults(props: NumResultsProps) {
       value={props.value.toString()}
       onChange={(value) => props.onChange(Number.parseInt(value))}
       menuClassName={ListStyle}
+      menuTestId="num-results-picker"
+      buttonTestId="num-results-picker-button"
     >
       <List items={['25', '50', '75', '100', '200']} />
     </DropdownWithIcon>
@@ -144,6 +150,8 @@ function Language(props: LanguageProps) {
       value={languages.find((l) => l.code === props.value)?.language}
       onChange={(value) => props.onChange(value)}
       menuClassName={ListStyle}
+      menuTestId="language-picker"
+      buttonTestId="language-picker-button"
     >
       <List items={languages.map((l) => ({ name: l.language, value: l.code }))} />
     </DropdownWithIcon>

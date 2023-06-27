@@ -1,0 +1,658 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Calendar > renders 1`] = `
+<DocumentFragment>
+  <div
+    class="rdp "
+  >
+    <div
+      class="rdp-months"
+    >
+      <div
+        class="rdp-month rdp-caption_start rdp-caption_end"
+      >
+        <div
+          class="fpmcnik"
+          data-testid="calendar"
+        >
+          <button
+            data-testid="previous-month"
+          >
+            <svg
+              fill="none"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.2339 15C12.4444 15 12.6316 14.933 12.7719 14.799C13.076 14.531 13.076 14.062 12.7719 13.794L8.81871 9.99721L12.7719 6.22278C13.076 5.95477 13.076 5.48576 12.7719 5.21776C12.4912 4.92741 12 4.92741 11.7193 5.21776L7.22807 9.50586C6.92398 9.77387 6.92398 10.2429 7.22807 10.5109L11.7193 14.799C11.8596 14.933 12.0468 15 12.2339 15Z"
+                fill="currentcolor"
+              />
+            </svg>
+          </button>
+          <label
+            data-testid="month-header"
+          >
+            June 2023
+          </label>
+          <button
+            data-testid="next-month"
+            disabled=""
+          >
+            <svg
+              fill="none"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.76608 15C7.55556 15 7.36842 14.933 7.22807 14.799C6.92398 14.531 6.92398 14.062 7.22807 13.794L11.1813 9.99721L7.22807 6.22278C6.92398 5.95477 6.92398 5.48576 7.22807 5.21776C7.50877 4.92741 8 4.92741 8.2807 5.21776L12.7719 9.50586C13.076 9.77387 13.076 10.2429 12.7719 10.5109L8.2807 14.799C8.14035 14.933 7.95322 15 7.76608 15Z"
+                fill="currentcolor"
+              />
+            </svg>
+          </button>
+        </div>
+        <table
+          aria-labelledby="react-day-picker-1"
+          class="rdp-table"
+          role="grid"
+        >
+          <thead
+            class="rdp-head"
+          >
+            <tr
+              class="rdp-head_row"
+            >
+              <th
+                aria-label="Sunday"
+                class="rdp-head_cell"
+                scope="col"
+                style="font-weight: normal; font-size: 12px; line-height: 18px;"
+              >
+                Sun
+              </th>
+              <th
+                aria-label="Monday"
+                class="rdp-head_cell"
+                scope="col"
+                style="font-weight: normal; font-size: 12px; line-height: 18px;"
+              >
+                Mon
+              </th>
+              <th
+                aria-label="Tuesday"
+                class="rdp-head_cell"
+                scope="col"
+                style="font-weight: normal; font-size: 12px; line-height: 18px;"
+              >
+                Tue
+              </th>
+              <th
+                aria-label="Wednesday"
+                class="rdp-head_cell"
+                scope="col"
+                style="font-weight: normal; font-size: 12px; line-height: 18px;"
+              >
+                Wed
+              </th>
+              <th
+                aria-label="Thursday"
+                class="rdp-head_cell"
+                scope="col"
+                style="font-weight: normal; font-size: 12px; line-height: 18px;"
+              >
+                Thu
+              </th>
+              <th
+                aria-label="Friday"
+                class="rdp-head_cell"
+                scope="col"
+                style="font-weight: normal; font-size: 12px; line-height: 18px;"
+              >
+                Fri
+              </th>
+              <th
+                aria-label="Saturday"
+                class="rdp-head_cell"
+                scope="col"
+                style="font-weight: normal; font-size: 12px; line-height: 18px;"
+              >
+                Sat
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="rdp-tbody"
+            role="rowgroup"
+          >
+            <tr
+              class="rdp-row"
+            >
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <div
+                  role="gridcell"
+                />
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <div
+                  role="gridcell"
+                />
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <div
+                  role="gridcell"
+                />
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <div
+                  role="gridcell"
+                />
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="0"
+                  type="button"
+                >
+                  1
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  2
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  3
+                </button>
+              </td>
+            </tr>
+            <tr
+              class="rdp-row"
+            >
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  4
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  5
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  6
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  7
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  8
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  9
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  10
+                </button>
+              </td>
+            </tr>
+            <tr
+              class="rdp-row"
+            >
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  11
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  12
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  13
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  14
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  15
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  16
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  17
+                </button>
+              </td>
+            </tr>
+            <tr
+              class="rdp-row"
+            >
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  18
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  19
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  20
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  21
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  22
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  23
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  24
+                </button>
+              </td>
+            </tr>
+            <tr
+              class="rdp-row"
+            >
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day"
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  25
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  aria-selected="true"
+                  class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_disabled rdp-day_today"
+                  disabled=""
+                  name="day"
+                  role="gridcell"
+                  style="font-weight: 500;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  26
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day rdp-day_disabled"
+                  disabled=""
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  27
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day rdp-day_disabled"
+                  disabled=""
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  28
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day rdp-day_disabled"
+                  disabled=""
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  29
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <button
+                  class="rdp-button_reset rdp-button rdp-day rdp-day_disabled"
+                  disabled=""
+                  name="day"
+                  role="gridcell"
+                  tabindex="-1"
+                  type="button"
+                >
+                  30
+                </button>
+              </td>
+              <td
+                class="rdp-cell"
+                role="presentation"
+                style="font-size: 14px; line-height: 22px;"
+              >
+                <div
+                  role="gridcell"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -40,7 +40,7 @@ export function Article(props: ArticleProps) {
   const title = props.article.article.replace(/_/g, ' ');
 
   return (
-    <article className={articleStyle}>
+    <article className={articleStyle} data-testid="article">
       <div className="index">{props.index + 1}</div>
       <div className="title">{title}</div>
       <div className="views">{props.article.views.toLocaleString('en-US')} views</div>

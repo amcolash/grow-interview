@@ -1,6 +1,6 @@
 import { Menu } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/transitions/slide.css';
-import React, { FormEvent, MouseEventHandler } from 'react';
+import React, { MouseEventHandler } from 'react';
 import { classes, media, style } from 'typestyle';
 
 import { ReactComponent as ChevronDown } from '../icons/chevron-down.svg';
@@ -14,7 +14,10 @@ interface DropdownWithIconProps {
   value: React.ReactNode;
   children: React.ReactNode;
   onChange?: (value: any) => void;
+
   menuClassName?: string;
+  menuTestId?: string;
+  buttonTestId?: string;
 }
 
 const wrapperStyle = style(
@@ -87,6 +90,7 @@ export function DropdownWithIcon(props: DropdownWithIconProps) {
       menuClassName={classes(menuStyle, props.menuClassName)}
       gap={10}
       transition
+      data-testid={props.menuTestId}
     >
       {props.children}
     </Menu>
@@ -102,9 +106,17 @@ interface MenuButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
-const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(function Internal(props, ref) {
+const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps & DropdownWithIconProps>(function Internal(
+  props,
+  ref
+) {
   return (
-    <button className={wrapperStyle} ref={ref} onClick={props.onClick}>
+    <button
+      className={wrapperStyle}
+      ref={ref}
+      onClick={props.onClick}
+      data-testid={props.buttonTestId || 'menu-button'}
+    >
       {props.icon}
 
       <div className="text">

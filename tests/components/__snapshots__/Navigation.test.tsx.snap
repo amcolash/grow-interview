@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navigation > renders 1`] = `
+<DocumentFragment>
+  <nav
+    class="fv8myzm"
+    data-testid="navigation"
+  />
+</DocumentFragment>
+`;

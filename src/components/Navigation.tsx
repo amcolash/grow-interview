@@ -13,5 +13,5 @@ const navStyle = style({
 });
 
 export function Navigation() {
-  return <nav className={navStyle}></nav>;
+  return <nav className={navStyle} data-testid="navigation"></nav>;
 }

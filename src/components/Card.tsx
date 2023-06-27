@@ -5,6 +5,7 @@ import { mobileWidth } from '../consts';
 
 interface CardProps {
   children: React.ReactNode;
+  testId?: string;
 }
 
 const cardListStyle = style(
@@ -22,5 +23,9 @@ const cardListStyle = style(
 );
 
 export function Card(props: CardProps) {
-  return <div className={cardListStyle}>{props.children}</div>;
+  return (
+    <div className={cardListStyle} data-testid={props.testId || 'card'}>
+      {props.children}
+    </div>
+  );
 }

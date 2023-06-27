@@ -27,6 +27,6 @@ const buttonStyle = style(
   media({ maxWidth: mobileWidth }, { width: '100%' })
 );
 
-export function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
-  return <button {...props} className={buttonStyle} />;
+export function Button(props: ButtonHTMLAttributes<HTMLButtonElement> & { 'data-testid'?: string }) {
+  return <button {...props} className={buttonStyle} data-testid={props['data-testid'] || 'button'} />;
 }

@@ -1,0 +1,26 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Article > renders 1`] = `
+<DocumentFragment>
+  <article
+    class="f1cqgvxd"
+    data-testid="article"
+  >
+    <div
+      class="index"
+    >
+      2
+    </div>
+    <div
+      class="title"
+    >
+      Test Article
+    </div>
+    <div
+      class="views"
+    >
+      123,456,789 views
+    </div>
+  </article>
+</DocumentFragment>
+`;

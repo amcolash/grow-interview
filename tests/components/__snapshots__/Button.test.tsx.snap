@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > renders 1`] = `
+<DocumentFragment>
+  <button
+    class="f1g1amr8"
+    data-testid="button"
+  >
+    Inner Text
+  </button>
+</DocumentFragment>
+`;

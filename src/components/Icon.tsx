@@ -3,7 +3,7 @@ import { style } from 'typestyle';
 
 interface IconProps {
   children: React.ReactNode;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 const iconStyle = style({
@@ -17,7 +17,7 @@ const iconStyle = style({
 
 export function Icon(props: IconProps) {
   return (
-    <div className={iconStyle} style={props.style}>
+    <div className={iconStyle} style={props.style} data-testid="icon">
       {props.children}
     </div>
   );

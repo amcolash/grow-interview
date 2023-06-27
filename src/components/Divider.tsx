@@ -13,5 +13,5 @@ const dividerStyle = style(
 );
 
 export function Divider() {
-  return <div className={dividerStyle}></div>;
+  return <div className={dividerStyle} data-testid="divider"></div>;
 }

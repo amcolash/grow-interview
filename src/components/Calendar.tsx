@@ -84,15 +84,16 @@ const captionStyle = style({
 });
 
 function CustomCaption(props: CaptionProps) {
-  const { previousMonth, nextMonth, goToMonth, displayMonths } = useNavigation();
+  const { previousMonth, nextMonth, goToMonth } = useNavigation();
   const caption = props.displayMonth.toLocaleDateString(undefined, {
     month: 'long',
     year: 'numeric',
   });
 
   return (
-    <div className={captionStyle}>
+    <div className={captionStyle} data-testid="calendar">
       <button
+        data-testid="previous-month"
         onClick={() => {
           if (!previousMonth) return;
           goToMonth(previousMonth);
@@ -100,8 +101,9 @@ function CustomCaption(props: CaptionProps) {
       >
         <ChevronLeft />
       </button>
-      <label>{caption}</label>
+      <label data-testid="month-header">{caption}</label>
       <button
+        data-testid="next-month"
         onClick={() => {
           if (!nextMonth) return;
           goToMonth(nextMonth);

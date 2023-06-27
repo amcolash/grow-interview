@@ -65,9 +65,11 @@ export function BottomPagination(props: BottomPaginationProps) {
       breakLabel="..."
       nextLabel={<ChevronRight />}
       onPageChange={props.onPageChange}
+      initialPage={props.currentPage}
       pageCount={props.totalPages}
       previousLabel={<ChevronLeft />}
       renderOnZeroPageCount={null}
+      data-testid="pagination"
     />
   );
 }

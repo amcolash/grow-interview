@@ -36,7 +36,7 @@ export function List(props: ListProps) {
     const value = typeof i === 'string' ? i : i.value;
 
     return (
-      <MenuItem value={value} className={itemStyle} key={value}>
+      <MenuItem value={value} className={itemStyle} key={value} data-testid="list-item">
         {name}
       </MenuItem>
     );

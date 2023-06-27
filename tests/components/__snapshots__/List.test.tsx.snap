@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`List > renders complex items 1`] = `
+<DocumentFragment>
+  <button
+    data-testid="menu-button"
+  >
+    Menu Button
+  </button>
+</DocumentFragment>
+`;
+
+exports[`List > renders string items 1`] = `
+<DocumentFragment>
+  <button
+    data-testid="menu-button"
+  >
+    Menu Button
+  </button>
+</DocumentFragment>
+`;
