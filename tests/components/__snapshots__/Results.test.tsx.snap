@@ -1,0 +1,89 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Results > renders error (no page) 1`] = `
+<DocumentFragment>
+  <div
+    class="fzx2n3q"
+    data-testid="search-results"
+  >
+    <div
+      data-testid="results-error"
+      style="text-align: center;"
+    >
+      Something went wrong fetching articles!
+      <pre />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Results > renders errors 1`] = `
+<DocumentFragment>
+  <div
+    class="fzx2n3q"
+    data-testid="search-results"
+  >
+    <div
+      data-testid="results-error"
+      style="text-align: center;"
+    >
+      Something went wrong fetching articles!
+      <pre>
+        Something went wrong getting data
+      </pre>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Results > renders null by default 1`] = `<DocumentFragment />`;
+
+exports[`Results > renders valid results 1`] = `
+<DocumentFragment>
+  <div
+    class="fzx2n3q"
+    data-testid="search-results"
+  >
+    <article
+      class="f1cqgvxd"
+      data-testid="article"
+    >
+      <div
+        class="index"
+      >
+        1
+      </div>
+      <div
+        class="title"
+      >
+        Test1
+      </div>
+      <div
+        class="views"
+      >
+        123,456 views
+      </div>
+    </article>
+    <article
+      class="f1cqgvxd"
+      data-testid="article"
+    >
+      <div
+        class="index"
+      >
+        2
+      </div>
+      <div
+        class="title"
+      >
+        Test2
+      </div>
+      <div
+        class="views"
+      >
+        123 views
+      </div>
+    </article>
+  </div>
+</DocumentFragment>
+`;

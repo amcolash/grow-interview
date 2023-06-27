@@ -4,7 +4,6 @@ import { style } from 'typestyle';
 import { ArticleData } from '../hooks/useFetchArticles';
 
 interface ArticleProps {
-  index: number;
   article: ArticleData;
 }
 
@@ -41,7 +40,7 @@ export function Article(props: ArticleProps) {
 
   return (
     <article className={articleStyle} data-testid="article">
-      <div className="index">{props.index + 1}</div>
+      <div className="index">{props.article.rank}</div>
       <div className="title">{title}</div>
       <div className="views">{props.article.views.toLocaleString('en-US')} views</div>
     </article>

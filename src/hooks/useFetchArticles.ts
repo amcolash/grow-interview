@@ -22,6 +22,11 @@ interface APIResponse {
 // Cache API responses for the session to reduce redundant requests
 const CACHE: { [url: string]: APIResponse } = {};
 
+/**
+ * React hook that fetches articles from the Wikipedia API. The API response is cached for the session to reduce redundant requests.
+ * @param url Wikipedia Url to fetch articles from
+ * @returns { articles: ArticleData[] | undefined, error: any} Articles or error based on results of the fetch
+ */
 export function useFetchArticles(url: string) {
   const [articles, setArticles] = React.useState<ArticleData[]>();
   const [error, setError] = React.useState<any>();
@@ -36,6 +41,10 @@ export function useFetchArticles(url: string) {
   return { articles, error };
 }
 
+/** Internal data fetching function for wikipedia data (used by useFetchArticles)
+ * @param url Wikipedia Url to fetch articles from
+ * @returns { articles: ArticleData[] | undefined, error: any} Articles or error based on results of the fetch
+ */
 export async function getData(url: string): Promise<[articles: ArticleData[] | undefined, error: any]> {
   if (!url || url.length === 0) return [undefined, undefined];
 
@@ -58,6 +67,11 @@ export async function getData(url: string): Promise<[articles: ArticleData[] | u
   return [articles, error];
 }
 
+/** Paginate results from article results
+ * @param pageSize Number of articles per page
+ * @param articles Articles to paginate
+ * @returns { ArticleData[][] | undefined } Paginated articles
+ */
 export function generatePages(pageSize: number, articles?: ArticleData[]): ArticleData[][] | undefined {
   if (!articles) return undefined;
 

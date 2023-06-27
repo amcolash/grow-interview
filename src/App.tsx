@@ -6,8 +6,9 @@ import { Article } from './components/Article';
 import { BottomPagination } from './components/BottomPagination';
 import { Card } from './components/Card';
 import { Navigation } from './components/Navigation';
+import { Results } from './components/Results';
 import { mobileWidth } from './consts';
-import { generatePages, useFetchArticles } from './hooks/useFetchArticles';
+import { ArticleData, generatePages, useFetchArticles } from './hooks/useFetchArticles';
 
 const pageStyle = style({
   display: 'flex',
@@ -48,6 +49,7 @@ export default () => {
   const { articles, error } = useFetchArticles(url);
 
   const pages = generatePages(pageSize, articles);
+  const currentPage = pages ? pages[page] : undefined;
 
   return (
     <div className={pageStyle}>
@@ -67,23 +69,7 @@ export default () => {
             setUrl={setUrl}
           />
 
-          {url && url.length > 0 && (
-            <Card testId="search-results">
-              {error && (
-                <div style={{ textAlign: 'center' }} data-testid="results-error">
-                  Something went wrong fetching articles!
-                  <pre>{error}</pre>
-                </div>
-              )}
-
-              {!error &&
-                pages &&
-                pages[page] &&
-                pages[page].map((article, index) => (
-                  <Article key={index} index={page * pageSize + index} article={article} />
-                ))}
-            </Card>
-          )}
+          <Results url={url} error={error} currentPage={currentPage} />
         </div>
 
         {!error && pages && (

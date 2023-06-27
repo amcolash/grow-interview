@@ -1,10 +1,8 @@
 import { render, screen, within } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { vi } from 'vitest';
 
 import App from '../src/App';
-import * as fetchArticleUtils from '../src/hooks/useFetchArticles';
 
 describe('App', () => {
   it('renders', () => {
@@ -12,25 +10,7 @@ describe('App', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('renders error state when search fails', async () => {
-    // mock.mockImplementationOnce(() => {
-    //   return { articles: undefined, error: 'Error Getting Data' };
-    // });
-
-    const { asFragment } = render(<App />);
-    const searchButton = screen.getByTestId('search-button');
-
-    const mock = vi.spyOn(fetchArticleUtils, 'getData');
-    mock.mockRejectedValueOnce('Error Getting Data');
-
-    await act(async () => searchButton.click());
-
-    expect(asFragment()).toMatchSnapshot();
-
-    vi.resetAllMocks();
-  });
-
-  it('renders date: 3/26/2023, results: 75, language: de', async () => {
+  it('renders date: 5/26/2023, results: 75, language: de', async () => {
     const { asFragment } = render(<App />);
     const datePicker = screen.getByTestId('date-picker-button');
     act(() => datePicker.click());
@@ -39,7 +19,7 @@ describe('App', () => {
     const monthHeader = screen.getByTestId('month-header');
     const previousMonth = screen.getByTestId('previous-month');
 
-    while (monthHeader.textContent !== 'March 2023') {
+    while (monthHeader.textContent !== 'May 2023') {
       act(() => previousMonth.click());
     }
 
