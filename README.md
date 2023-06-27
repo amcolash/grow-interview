@@ -2,6 +2,23 @@
 
 A small project for grow therapy interview
 
+## Quick Start
+
+```bash
+# clone repo
+git clone git@github.com:amcolash/grow-interview.git
+cd grow-interview
+
+# install dependencies
+npm install
+
+# start dev server
+npm start
+
+# tests
+npm test
+```
+
 ## Nano React App Default Typescript Template
 
 The default template project for [nano-react-app](https://github.com/nano-react-app/nano-react-app).
